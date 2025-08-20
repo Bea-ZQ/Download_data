@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: Download_data
+Version: 2.0
+Summary: Download data package
+Author: BZQ
+Author-email: <beatriz.zenteno@ug.uchile.cl>
+
+Package to download data from ECT RBSP and OMNI. It can now download MagEIS data
