@@ -98,7 +98,13 @@ def get_remote_filename_ECT(date, remote_dir, probe, instrument, level):
     files = read_site_content_ECT(remote_dir)
 
     # Encontramos el link que hace match con la fecha, que es el nombre del archivo a descargar
-    filename = fnmatch.filter(files, f"*{date.strftime('%Y%m%d')}*")[0]
+#    print(fnmatch.filter(files, f"*{date.strftime('%Y%m%d')}*"))
+    try:
+        filename = fnmatch.filter(files, f"*{date.strftime('%Y%m%d')}*")[0]
+    except:
+        print('No file in remote')
+        filename = 0
+#    filename = fnmatch.filter(files, f"*{date.strftime('%Y%m%d')}*")
 
     return filename
 
@@ -150,32 +156,36 @@ def get_file_ECT(filename, remote_dir, local_dir):
 
     print(f"Retrieving ECT {filename} to {local_dir}")
 
-    # If the local directory does not exist, create it
-    if not os.path.exists(os.path.dirname(local_dir)):
-        try:
-            os.makedirs(os.path.dirname(local_dir))
-        except OSError as exc:
-            if exc.errno != errno.EEXIST:
-                raise
-
-    # Si el archivo no existe en el directorio local, lo descargamos
-    # si no existe el link, printeamos un mensaje de aviso
-    if not os.path.exists(local_dir+filename):
-        try:
-#            wget.download(url=remote_dir+filename, out=local_dir,
-#                          bar=bar_progress)
-            response = requests.get(remote_dir+filename, verify=False)
-            with open(local_dir+filename, 'wb') as file:
-                file.write(response.content)
-            print()
-            print(f"File downloaded: {filename}:")
-        except Exception as e:
-            print(e)
-            print(f"File not found {remote_dir+filename}")
-
-    # si el archivo ya existe en el directorio local, printeamos un mensaje avisando.
+    if filename ==0:
+        print('No file in remote')
     else:
-        print(f"File already exist: {filename}")
+        # If the local directory does not exist, create it
+        if not os.path.exists(os.path.dirname(local_dir)):
+            try:
+                os.makedirs(os.path.dirname(local_dir))
+            except OSError as exc:
+                if exc.errno != errno.EEXIST:
+                    raise
+
+        # Si el archivo no existe en el directorio local, lo descargamos
+        # si no existe el link, printeamos un mensaje de aviso
+        #AQUÍ TIENE QUE IR UN IF FILENAME == 0
+        if not os.path.exists(local_dir+filename):
+            try:
+    #            wget.download(url=remote_dir+filename, out=local_dir,
+    #                          bar=bar_progress)
+                response = requests.get(remote_dir+filename, verify=False)
+                with open(local_dir+filename, 'wb') as file:
+                    file.write(response.content)
+                print()
+                print(f"File downloaded: {filename}:")
+            except Exception as e:
+                print(e)
+                print(f"File not found {remote_dir+filename}")
+
+        # si el archivo ya existe en el directorio local, printeamos un mensaje avisando.
+        else:
+            print(f"File already exist: {filename}")
     print()
 
     return
