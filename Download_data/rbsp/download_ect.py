@@ -215,7 +215,7 @@ def download_CDFfiles_ECT(start_date, end_date, remote_root_dir, local_root_dir,
         - None
     '''
 
-    print('\nPrint para ver si efectivamente se actualiza el paquete Download_data ECT V3')
+#    print('\nPrint para ver si efectivamente se actualiza el paquete Download_data ECT V3')
     print(f'\nDOWNLOADING ECT-{instrument.upper()} INSTRUMENT DATA')
     date_array = pd.date_range(start=start_date, end=end_date, freq='D')
 

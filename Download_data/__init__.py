@@ -1,2 +1,0 @@
-from Download_data.download_omni import download_CDFfiles_OMNI
-from Download_data.download_ect import download_CDFfiles_ECT
