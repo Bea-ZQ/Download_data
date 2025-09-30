@@ -4,6 +4,15 @@ import wget
 from Download_data.utils_download import bar_progress
 
 
+
+"""
+Author: BZQ
+Email: beatriz.zenteno@usach.cl
+Adapted from original codes by Victor Pinto
+Date: Dic 2024
+"""
+
+
 ################# Functions to create file and directory names #################
 
 def get_remote_dir_OMNI(date, remote_root_dir, res, typ):

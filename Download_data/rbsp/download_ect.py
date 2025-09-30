@@ -10,6 +10,13 @@ import glob
 from Download_data.utils_download import bar_progress
 
 
+"""
+Author: BZQ
+Email: beatriz.zenteno@usach.cl
+Adapted from original codes by Victor Pinto
+Date: Dic 2024
+"""
+
 ########## Functions to create locar and remote directoris + filenames #########
 
 def read_site_content_ECT(url):
