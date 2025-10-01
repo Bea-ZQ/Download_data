@@ -12,7 +12,7 @@ import errno
 from Download_data.utils_download import bar_progress
 
 """
-Author: Felipe Eduardo Oliverio Darmazo
+Author: Felipe Darmazo
 Email: felipe.darmazo@ug.uchile.cl
 Adapted from original codes by Victor Pinto
 Date: Sept 2025
